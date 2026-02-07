@@ -1,2 +1,41 @@
-# Keylogger
-PoC de Keylogger remoto desarrollado en Python para investigación en ciberseguridad. Implementa interceptación de teclado a bajo nivel (hooks) y exfiltración de datos en tiempo real mediante sockets TCP. Diseñado para el estudio de persistencia y detección de amenazas en entornos Windows/Linux. Solo para fines académicos.
+# 🐍 RedShenlong: Remote Keylogger PoC
+
+![Python Version](https://img.shields.io/badge/python-3.8+-blue.svg)
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
+![Status](https://img.shields.io/badge/Status-Academic%20PoC-red.svg)
+
+Técnica desarrollada en Python para el estudio de la interceptación de eventos de entrada y la exfiltración de datos mediante protocolos de red. Este proyecto demuestra cómo un proceso en segundo plano puede capturar pulsaciones de teclado, procesarlas en buffers de memoria y transmitirlas a un servidor remoto mediante sockets TCP.
+
+## 📸 Demostración de Funcionamiento
+El sistema valida la conectividad antes de iniciar y envía los datos palabra por palabra para optimizar el tráfico de red.
+
+| 💻 Cliente (Windows / .exe) | 🛡️ Receptor (Kali Linux / Netcat) |
+| :---: | :---: |
+| ![Cliente](window.png) | ![Servidor](kali.png) |
+
+---
+
+## 🛠️ Características Principales
+* **Validación Previa:** Bucle de configuración que verifica la validez del puerto (1-65535) y la conectividad real con la IP destino antes de activar el hook.
+* **Captura de Bajo Nivel:** Uso de la librería `keyboard` para interceptar events del sistema de forma global.
+* **Eficiencia de Red:** Implementación de un buffer que solo realiza el envío mediante sockets al detectar teclas de separación (`Espacio` o `Enter`).
+* **Manejo de Errores:** Control de excepciones para evitar el cierre del script si el servidor receptor se desconecta temporalmente.
+
+## 🚀 Guía de Uso
+
+### 1. Configurar el Receptor (Servidor)
+En la máquina de control (ej. Kali Linux), inicia un listener persistente que no se cierre tras recibir cada paquete:
+
+```bash
+ while true; do sudo nc -nlvp 443 2>/dev/null; done
+```
+### 2. Ejecutar el Cliente (Windows)
+Requiere Python 3.x y permisos de administrador para capturar eventos globales:
+
+```bash
+pip install keyboard
+python run.py
+```
+
+## ⚠️ DESCARGO DE RESPONSABILIDAD (DISCLAIMER)
+**IMPORTANTE**: Este proyecto tiene fines estrictamente educativos y de investigación. El uso de esta herramienta para monitorizar dispositivos sin el consentimiento explícito y por escrito del propietario es una actividad ilegal. El autor no se hace responsable del uso indebido que se le pueda dar a este código.
