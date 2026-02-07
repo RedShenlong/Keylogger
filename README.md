@@ -1,4 +1,4 @@
-# 🐍 RedShenlong: Remote Keylogger PoC
+# RedShenlong: Remote Keylogger PoC
 
 ![Python Version](https://img.shields.io/badge/python-3.8+-blue.svg)
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
