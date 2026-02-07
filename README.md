@@ -11,7 +11,7 @@ El sistema valida la conectividad antes de iniciar y envía los datos palabra po
 
 | 💻 Cliente (Windows / .exe) | 🛡️ Receptor (Kali Linux / Netcat) |
 | :---: | :---: |
-| ![Cliente](window.png) | ![Servidor](kali.png) |
+| <img src="img/window.png" width="400"> | <img src="img/kali.png" width="400"> |
 
 ---
 
